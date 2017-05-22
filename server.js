@@ -3,10 +3,12 @@ var exphbs = require("express-handlebars");
 var methodOverride = require('method-override');
 var bodyParser = require('body-parser');
 var path = require('path');
+var db = require('./models');
 
 
 var app = express();
 var port = process.env.PORT || 8080;
+
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
@@ -18,16 +20,13 @@ app.use(bodyParser.text());
 app.use(bodyParser.json({
 	type: "application/vnd.api+json"
 }));
-app.use(express.static(path.join(__dirname + '/public')));
+app.use(express.static(path.join(__dirname + '/views/public')));
 app.use(require('./routes/htmlRoutes'));
-app.use(require('./routes/userRoutes'));
-app.use(require('./routes/productRoutes'));
+// app.use(require('./routes/userRoutes'));
+// app.use(require('./routes/productRoutes'));
 
-app.listen(port, function(err){
-	if(err){
-		console.log(err);
-	}
-	else{
-		console.log('listening on port: ' + port);
-	}
-})
+db.sequelize.sync().then(function() {
+  app.listen(port, function() {
+    console.log("App listening on PORT " + port);
+  });
+});

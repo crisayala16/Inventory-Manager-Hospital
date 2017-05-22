@@ -1,0 +1,9 @@
+.product-list{
+	list-style-type: none;
+	display: inline;
+	margin: 10px;
+}
+a, a:hover{
+	text-decoration: none;
+	color: inherit;
+}

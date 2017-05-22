@@ -2,21 +2,21 @@
   "development": {
     "username": "root",
     "password": "Zazaza00!",
-    "database": "blogger",
+    "database": "hostInvent_db",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
   "test": {
     "username": "root",
     "password": "Zazaza00!",
-    "database": "database_test",
+    "database": "hostInvent_db",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
   "production": {
     "username": "root",
     "password": "Zazaza00!",
-    "database": "database_production",
+    "database": "hostInvent_db",
     "host": "127.0.0.1",
     "dialect": "mysql"
   }
