@@ -2,22 +2,23 @@
   "development": {
     "username": "root",
     "password": "Zazaza00!",
-    "database": "hostInvent_db",
-    "host": "127.0.0.1",
-    "dialect": "mysql"
+    "database": "hostinvent_db",
+    "host": "localhost",
+    "dialect": "mysql",
+    "logging": false
   },
   "test": {
-    "username": "root",
-    "password": "Zazaza00!",
-    "database": "hostInvent_db",
-    "host": "127.0.0.1",
+    "username": "xvsq8iwytg34iq61",
+    "password": "x5b46pyzfe5fvtrs",
+    "database": "hostinvent_db",
+    "host": "r4919aobtbi97j46.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
     "dialect": "mysql"
   },
   "production": {
-    "username": "root",
-    "password": "Zazaza00!",
-    "database": "hostInvent_db",
-    "host": "127.0.0.1",
+    "username": "xvsq8iwytg34iq61",
+    "password": "x5b46pyzfe5fvtrs",
+    "database": "y9utd5gi8i0x85jf",
+    "host": "r4919aobtbi97j46.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
     "dialect": "mysql"
   }
 }

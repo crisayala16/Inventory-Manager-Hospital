@@ -1,3 +1,6 @@
+ul{
+	display: inline-block;
+}
 .product-list{
 	list-style-type: none;
 	display: inline;

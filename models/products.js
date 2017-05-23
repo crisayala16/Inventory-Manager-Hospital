@@ -1,16 +1,24 @@
 module.exports = function(sequelize, DataTypes) {
   var Product = sequelize.define("Product", {
-    product_name: {
+    name: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        len: [1]
+        len: [1, 32]
       }
     },
-    stock_quantity: {
+    price: {
+      type: DataTypes.DECIMAL,
+      allowNull: false,
+    },
+    quantity: {
       type: DataTypes.INTEGER,
-      allowNull: false
+      allowNull: false,
+      validate: {
+        len: [1, 5]
+      }
     }
+    
   },
     {
       classMethods: {
