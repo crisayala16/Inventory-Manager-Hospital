@@ -5,6 +5,7 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false,
       validate: {
         len: [3, 100]
+
       }
     },
     username: {
@@ -12,6 +13,7 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false,
       validate: {
         len: [3, 12]
+
       }
     },
     password: {
@@ -27,7 +29,6 @@ module.exports = function(sequelize, DataTypes) {
   
       classMethods: {
         associate: function(models) {
-         
           User.hasMany(models.Product, {
             onDelete: "cascade"
           });
@@ -37,3 +38,4 @@ module.exports = function(sequelize, DataTypes) {
   );
   return User;
 };
+
