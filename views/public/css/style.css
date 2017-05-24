@@ -1,3 +1,6 @@
+#manage-body{
+	padding: 0;
+}
 ul{
 	display: inline-block;
 }
@@ -10,3 +13,44 @@ a, a:hover{
 	text-decoration: none;
 	color: inherit;
 }
+.bg-table-head{
+	background-color: #303e4e;
+	color: #fff;
+}
+#login-body{
+	background: #303e4e;
+	padding: 50px 0;
+	height: 1000px;
+}
+#login-top-head{
+	padding: 30px 0px;
+	color: #fff;
+	width: 100%;
+}
+#login-top-title{
+	font-size: 55px;
+}
+#signUp-link{
+	display: block;
+	padding: 15px 0px;
+	font-size: 20px;
+}
+#signUp-link:hover, #login-link:hover{
+	color: #71e096;
+}
+#login-link{
+	font-size: 20px;
+}
+#signUp-body{
+	background: #2c3e50;
+	color: #fff;
+	height: 1000px;
+}
+.manage-input{
+	display: block;
+	width: 100%;
+}
+#addProductBtn{
+	margin: 10px 0px;
+}
+

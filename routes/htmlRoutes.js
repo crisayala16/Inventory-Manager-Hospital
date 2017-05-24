@@ -6,9 +6,7 @@ router.use(methodOverride("_method"));
 var db = require('./../models');
 
 router.get('/', function(req, res){
-	res.render('login', {
-		message: 'Hello'
-	});
+	res.render('login');
 });
 
 router.post('/', function(req, res){
@@ -19,16 +17,13 @@ router.post('/', function(req, res){
 	}).then(function(data){
 		var userName = data.dataValues.username;
 		var password = data.dataValues.password;
-		console.log(data);
 		
 		if(password === req.body.password){
 			res.redirect('/user/' + userName);
-			console.log('login successful');
 		}
-		else{
-			res.redirect('/');
-		}
-	})
+	}).catch(function(err){
+		res.status(400).send('Sorry, Invalid username or password!');
+	});
 });
 
 router.get('/signUp', function(req, res){
@@ -45,7 +40,9 @@ router.post('/signUp', function(req, res){
 		password: password
 	}).then(function(data){
 		res.redirect('/');
-	});
+	}).catch(function(err){
+		res.status(400).send("Please fill out all input fields");
+	})
 });
 
 router.get('/user/:username', function(req, res){
@@ -56,19 +53,19 @@ router.get('/user/:username', function(req, res){
 	}).then(function(data){
 		var currentUserId = data.dataValues.id;
 		db.Product.findAll({
-		where: {
-			UserId: currentUserId
-		}
-	}).then(function(data){
-		for(var i = 0; i < data.length; i++){
-			data[i].currentUser = req.params.username;
-		}
-		res.render('manage', {
-			products: data,
-			currentUser: req.params.username
+			where: {
+				UserId: currentUserId
+			}
+		}).then(function(data){
+			for(var i = 0; i < data.length; i++){
+				data[i].currentUser = req.params.username;
+			}
+			res.render('manage', {
+				products: data,
+				currentUser: req.params.username
+			});
 		});
 	});
-});
 	
 });
 
@@ -80,13 +77,13 @@ router.post('/user/:username' , function(req, res){
 	}).then(function(data){
 		var userId = data.dataValues.id;
 		db.Product.create({
-		name: req.body.productName,
-		quantity: req.body.quantity,
-		price: req.body.price,
-		UserId: userId
-	}).then(function(data){
-		res.redirect('/user/' + req.params.username);
-	});
+			name: req.body.productName,
+			quantity: req.body.quantity,
+			price: req.body.price,
+			UserId: userId
+		}).then(function(data){
+			res.redirect('/user/' + req.params.username);
+		});
 	});	
 });
 
