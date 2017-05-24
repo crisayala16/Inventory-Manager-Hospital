@@ -21,6 +21,9 @@ router.post('/', function(req, res){
 		if(password === req.body.password){
 			res.redirect('/user/' + userName);
 		}
+		else{
+			res.send('Sorry Invalid username or pssword!');
+		}
 	}).catch(function(err){
 		res.status(400).send('Sorry, Invalid username or password!');
 	});
@@ -99,6 +102,27 @@ router.put('/user/:username/product/:productName', function(req, res){
 		}
 	}).then(function(data){
 		res.redirect('/user/' + req.params.username);
+	});
+});
+
+//routers for service section
+router.get('/user/:username/service', function(req, res){
+	db.User.findOne({
+		where: {
+			username: req.params.username
+		}
+	}).then(function(data){
+		var currentUserId = data.dataValues.id
+		db.Product.findAll({
+			where: {
+				UserId: currentUserId
+			}
+		}).then(function(data){
+			res.render('service', {
+				products: data,
+				currentUser: req.params.username
+			});
+		});
 	});
 })
 module.exports = router;

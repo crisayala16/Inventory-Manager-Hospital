@@ -1,0 +1,24 @@
+<div class="container-fluid" id="manage-body">
+
+	<span id="manage-home-logo" class="pull-left fa fa-folder-open-o"></span>
+	<a href="/user/{{currentUser}}/service" class="pull-right nav-item">Service<div class="active animated flash"></div></a>
+	<a href="/user/{{currentUser}}" class="pull-right nav-item">Manager</a>
+	<div>
+		<div class="text-center" id="service-head-bar">
+			<h2>Products For Sale</h2>
+		</div>
+		<div id="service-well" class="well text-center">
+			<form action="/user/{{currentUser}}/service" method="POST">
+			{{#each products}}
+				<ul class="product-to-buy-list">
+					<li class="product-buy-item" name='productPrice'>$ {{this.price}}</li>
+					<li class="product-buy-item" name='productName'>{{this.name}}</li>
+					<li class="product-buy-item"><input type="text" name="amountToSell"></li>
+				</ul>
+			{{/each}}
+				<button type="submit" class="btn btn-info" data-toggle='modal' data-target='#trans-modal'>Checkout</button>
+			</form>
+		</div>
+		
+	</div>
+</div>
