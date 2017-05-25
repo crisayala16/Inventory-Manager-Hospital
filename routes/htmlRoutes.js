@@ -134,10 +134,8 @@ router.post('/user/:username/service/checkout', function(req, res){
 	}).then(function(data){
 		var UserId = data.dataValues.id;
 		var results = req.body.checkoutCart;
-		res.send()
 		for(var i = 0; i < results.length; i++){
 		var newAmount = parseInt(results[i].currentAmount) - parseInt(results[i].amount);
-		console.log(newAmount);
 		db.Product.update({
 			quantity: newAmount
 		},
@@ -148,7 +146,7 @@ router.post('/user/:username/service/checkout', function(req, res){
 			}
 		}).then(function(data){
 			if(i === results.length){
-				
+				res.redirect('/user/' + req.params.username + '/service');
 			}
 		});
 	}
