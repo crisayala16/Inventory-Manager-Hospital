@@ -1,10 +1,7 @@
 #manage-body{
 	padding: 0;
 }
-ul{
-	display: inline-block;
-}
-.product-list{
+.product-buy-item{
 	list-style-type: none;
 	display: inline;
 	margin: 10px;
@@ -29,6 +26,7 @@ a, a:hover{
 }
 #login-top-title{
 	font-size: 55px;
+	font-family: 'Sanchez', serif;
 }
 #signUp-link{
 	display: block;
@@ -53,4 +51,42 @@ a, a:hover{
 #addProductBtn{
 	margin: 10px 0px;
 }
-
+#home-logo{
+	background-color: #18bc9c;
+	padding: 8px 5px 10px 12px;
+	border: 1px solid #18bc9c;
+	border-radius: 50%;
+	-webkit-animation-delay: 0.8s;
+}
+#manage-home-logo{
+	background-color: #18bc9c;
+	padding: 8px;
+	border: 1px solid #18bc9c;
+	font-size: 30px;
+	border-radius: 50%;
+	margin: 10px;
+}
+.nav-item{
+	display: inline-block;
+	padding: 10px;
+	margin: 10px;
+	font-size: 20px;
+}
+.active{
+	border-bottom: 3px solid #18bc9c;
+}
+#service-head-bar{
+	display: block;
+	clear: both;
+	background: #2c3e50; 
+	padding: 15px 0px;
+	color: #fff;
+}
+#service-well{
+	height: 800px;
+}
+#select-product{
+	width: 200px;
+	padding: 12px;
+	margin: 12px;
+}
