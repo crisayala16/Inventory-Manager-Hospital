@@ -124,5 +124,35 @@ router.get('/user/:username/service', function(req, res){
 			});
 		});
 	});
-})
+});
+
+router.post('/user/:username/service/checkout', function(req, res){
+	db.User.findOne({
+		where: {
+			username: req.params.username
+		}
+	}).then(function(data){
+		var UserId = data.dataValues.id;
+		var results = req.body.checkoutCart;
+		res.send()
+		for(var i = 0; i < results.length; i++){
+		var newAmount = parseInt(results[i].currentAmount) - parseInt(results[i].amount);
+		console.log(newAmount);
+		db.Product.update({
+			quantity: newAmount
+		},
+		{
+			where: {
+				name: results[i].product,
+				UserId: UserId
+			}
+		}).then(function(data){
+			if(i === results.length){
+				
+			}
+		});
+	}
+	});
+	
+});
 module.exports = router;

@@ -8,16 +8,19 @@
 			<h2>Products For Sale</h2>
 		</div>
 		<div id="service-well" class="well text-center">
-			<form action="/user/{{currentUser}}/service" method="POST">
+		<form>
+			<select class="product-select">
+				<option></option>
 				{{#each products}}
-				<ul class="product-to-buy-list">
-					<li class="product-buy-item" name='productPrice'>$ {{this.price}}</li>
-					<li class="product-buy-item" name='productName'>{{this.name}}</li>
-					<li class="product-buy-item"><input type="text" name="amountToSell"></li>
-				</ul>
+					<option>{{this.name}} * {{this.quantity}} * ${{this.price}}</option>
 				{{/each}}
-				<button type="submit" class="btn btn-info" data-toggle='modal' data-target='#trans-modal'>Checkout</button>
-			</form>
+			</select>
+			<input type="text" id="amountToSell" value="0">
+		</form>
+				<button class="btn btn-success" id="addCart">Add To Cart</button>
+				<input type="hidden" id="currentUser" value="{{currentUser}}">
+				<button id="openModBtn" type="submit" class="btn btn-info" data-toggle='modal' data-target='#trans-modal'>Checkout</button>
+	
 		</div>
 		<!-- Modal -->
 		<div id="trans-modal" class="modal fade" role="dialog">
@@ -25,7 +28,7 @@
 				<!-- Modal content-->
 				<div class="modal-content">
 					<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal">Cancel</button>
+						<button type="button" class="close" data-dismiss="modal">Cancel</button>
 						<h4 class="modal-title">Checkout</h4>
 					</div>
 					<div class="modal-body">
@@ -39,4 +42,7 @@
 		
 	</div>
 </div>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<!-- JQuery -->
+<script src="https://code.jquery.com/jquery-3.1.1.js" integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA=" crossorigin="anonymous"></script>
 <script type="text/javascript" src="/js/service.js"></script>
