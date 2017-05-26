@@ -3,7 +3,7 @@ $(document).ready(function(){
 	var currentUser = $('#currentUser').val();
 
 	$(document).on('click', '#addCart', function(){
-		var newProduct = $('.product-select').val().trim();
+		var newProduct = $('#product-select').val().trim();
 		newProduct = newProduct.split('*');
 		var amountToSell = $('#amountToSell').val().trim();
 		var productObj = {};
@@ -12,7 +12,7 @@ $(document).ready(function(){
 		productObj.price = newProduct[2].replace('$', "");
 		productObj.amount = amountToSell;
 		checkoutCart.push(productObj);
-		$('.product-select').val('');
+		$('#product-select').val('');
 		$('#amountToSell').val('');
 		var div = $('<div class="row text-center">');
 		var divCol1 = $('<div class="col-sm-6">');
@@ -40,13 +40,18 @@ $(document).ready(function(){
 		if(customerMoney < moneyToPay){
 			alert('Not Enough Money.');
 		}
-		else if(customerMoney > moneyToPay){
-			$.post('/user/' + currentUser + '/service/checkout', {checkoutCart: checkoutCart}).done(function(data){
+		else if(customerMoney > moneyToPay || customerMoney === moneyToPay){
+			$.post('/user/' + currentUser + '/service', {checkoutCart: checkoutCart}).done(function(data){
 			if(data){
 				alert('Transaction Successful!');
 			}
+			var moneyDiff = (customerMoney - moneyToPay);
+			var h4 = $('<h4>');
+			h4.text("Change: $" + moneyDiff);
+			$('#change').html(h4);
 		})
 		}
 
-	})
+	});
+
 })
