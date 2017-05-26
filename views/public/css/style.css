@@ -90,3 +90,12 @@ a, a:hover{
 	padding: 12px;
 	margin: 12px;
 }
+.input-group{
+	width: 50%;
+}
+.btn-margin{
+	margin-top: 15px;
+}
+.low-inventory{
+	color: #e44434;
+}

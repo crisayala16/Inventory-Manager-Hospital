@@ -23,13 +23,24 @@
 						<input type="hidden" name="productToAdd" value="{{this.name}}">
 						<input type="hidden" name="userIdToAdd" value='{{this.UserId}}'>
 						<input type="hidden" name="currentAmount" value="{{this.quantity}}">
-						<input type="text" name="amountToAdd" value="0">
-						<button type="submit" class="btn btn-success">Add</button>
+						<div class="form-group">
+							<div class="input-group">
+								<input type="text" class="form-control" name="amountToAdd" value="0" id="addStockInput">
+								<span class="input-group-btn">
+									<button type="submit" class="btn btn-success" type="button">Add</button>
+								</span>
+							</div>
+						</div>
 					</form>
 				</td>
 				<td>$ {{this.price}}</td>
+				{{#compare this.quantity '<' 5}}
+				<td class="low-inventory">{{this.name}}</td>
+				<td class="low-inventory">{{this.quantity}}</td>
+				{{else}}
 				<td>{{this.name}}</td>
-				<td>Quantity: {{this.quantity}}</td>
+				<td>{{this.quantity}}</td>
+				{{/compare}}
 			</tr>	
 			{{/each}}
 		</tbody>
