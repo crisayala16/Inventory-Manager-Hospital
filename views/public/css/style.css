@@ -98,4 +98,5 @@ a, a:hover{
 }
 .low-inventory{
 	color: #e44434;
+	-webkit-animation-delay: 0.5s;
 }
