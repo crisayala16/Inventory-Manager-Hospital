@@ -8,16 +8,27 @@
 			<h2>Products For Sale</h2>
 		</div>
 		<div id="service-well" class="well text-center">
-			<form action="/user/{{currentUser}}/service" method="POST">
-				{{#each products}}
-				<ul class="product-to-buy-list">
-					<li class="product-buy-item" name='productPrice'>$ {{this.price}}</li>
-					<li class="product-buy-item" name='productName'>{{this.name}}</li>
-					<li class="product-buy-item"><input type="text" name="amountToSell"></li>
-				</ul>
-				{{/each}}
-				<button type="submit" class="btn btn-info" data-toggle='modal' data-target='#trans-modal'>Checkout</button>
-			</form>
+			<div class="form-group">
+				
+				<div class="col-xs-6">
+				<label for="product-select" class="control-label">Products List</label>
+					<select class="animated bounceInDown form-control" id="product-select">
+						<option></option>
+						{{#each products}}
+						<option>{{this.name}} * {{this.quantity}} * ${{this.price}}</option>
+						{{/each}}
+					</select>
+				</div>
+				
+				<div class="col-xs-6">
+				<label for="amountToSell" class="control-label">Quantity</label>
+					<input type="text" class="animated bounceInDown form-control" id="amountToSell">
+				</div>
+			</div>
+			<button class="btn btn-success btn-margin" id="addCart">Add To Cart</button>
+			<input type="hidden" id="currentUser" value="{{currentUser}}">
+			<button id="openModBtn" type="submit" class="btn btn-info btn-margin" data-toggle='modal' data-target='#trans-modal'>Checkout</button>
+
 		</div>
 		<!-- Modal -->
 		<div id="trans-modal" class="modal fade" role="dialog">
@@ -25,12 +36,26 @@
 				<!-- Modal content-->
 				<div class="modal-content">
 					<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal">Cancel</button>
+						<button type="button" class="close" data-dismiss="modal">Cancel</button>
 						<h4 class="modal-title">Checkout</h4>
 					</div>
 					<div class="modal-body">
 						<div id="transactionDiv"></div>
-						<button id="finalBuy" class="btn btn-success">Buy Now</button>
+						
+					</div>
+					<div class="modal-footer">
+						<div class="row">
+							<div class="col-xs-6">
+								<h3>Total: $<span id="totalPrice"></span></h3>
+							</div>
+							<div class="col-xs-6">
+								<input type="text" id="customerMoney" value="0">
+								<button id="finalBuy" class="btn btn-success">Buy Now</button>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-xs-12" id="change"></div>
+						</div>
 					</div>
 				</div>
 
