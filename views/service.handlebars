@@ -8,10 +8,12 @@
 			<h2>Products For Sale</h2>
 		</div>
 		<div id="service-well" class="well text-center">
-			<div class="form-group">
-				
+			<div class="row">
+				<p class="low-inventory" id="message"></p>
+			</div>
+			<div class="form-group row">
 				<div class="col-xs-6">
-				<label for="product-select" class="control-label">Products List</label>
+					<label for="product-select" class="control-label">Products List</label>
 					<select class="animated bounceInDown form-control" id="product-select">
 						<option></option>
 						{{#each products}}
@@ -21,7 +23,7 @@
 				</div>
 				
 				<div class="col-xs-6">
-				<label for="amountToSell" class="control-label">Quantity</label>
+					<label for="amountToSell" class="control-label">Quantity</label>
 					<input type="text" class="animated bounceInDown form-control" id="amountToSell">
 				</div>
 			</div>
@@ -41,16 +43,20 @@
 					</div>
 					<div class="modal-body">
 						<div id="transactionDiv"></div>
-						
 					</div>
 					<div class="modal-footer">
 						<div class="row">
 							<div class="col-xs-6">
-								<h3>Total: $<span id="totalPrice"></span></h3>
+								<p id="totalPrice-style">Total: $<span id="totalPrice"></span></p>
 							</div>
 							<div class="col-xs-6">
-								<input type="text" id="customerMoney" value="0">
-								<button id="finalBuy" class="btn btn-success">Buy Now</button>
+								<div class="input-group" id="purchase-group">
+									<span class="input-group-addon">$</span>
+									<input type="text" id="customerMoney" value="0" class="form-control">
+									<span class="input-group-btn">
+										<button id="finalBuy" class="btn btn-success" type="button">Purchase</button>
+									</span>
+								</div>
 							</div>
 						</div>
 						<div class="row">
