@@ -4,8 +4,6 @@ var methodOverride = require('method-override');
 var bodyParser = require('body-parser');
 var path = require('path');
 var db = require('./models');
-
-
 var app = express();
 var port = process.env.PORT || 8080;
 
@@ -21,9 +19,10 @@ app.use(bodyParser.json({
 	type: "application/vnd.api+json"
 }));
 app.use(express.static(path.join(__dirname + '/views/public')));
-app.use(require('./routes/htmlRoutes'));
-// app.use(require('./routes/userRoutes'));
-// app.use(require('./routes/productRoutes'));
+app.use(require('./routes/loginSignUpRoutes.js'));
+app.use(require('./routes/managerRoutes.js'));
+app.use(require('./routes/serviceRoutes.js'));
+
 
 db.sequelize.sync().then(function() {
   app.listen(port, function() {
