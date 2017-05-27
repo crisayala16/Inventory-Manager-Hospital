@@ -100,3 +100,18 @@ a, a:hover{
 	color: #e44434;
 	-webkit-animation-delay: 0.5s;
 }
+#customerMoney{
+	
+	min-width: 80px;
+}
+#totalPrice-style{
+	font-size: 20px;
+	padding: 5px 0px;
+	float: left;
+}
+#purchase-group{
+	float: right;
+}
+#message{
+	color: #e44434;
+}
