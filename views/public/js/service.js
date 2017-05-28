@@ -10,8 +10,8 @@ $(document).ready(function(){
 		var productObj = {};
 		productObj.product = newProduct[0];
 		productObj.currentAmount = newProduct[1];
-		productObj.price = parseInt(newProduct[2].replace('$', ""));
-		productObj.amount = parseInt(amountToSell);
+		productObj.price = parseFloat(newProduct[2].replace('$', ""));
+		productObj.amount = parseFloat(amountToSell);
 		if(productObj.amount > productObj.currentAmount){
 			$('#message').text('Insufficient stock quantity');
 			$('#amountToSell').val('');
@@ -33,7 +33,7 @@ $(document).ready(function(){
 				console.log(totalPrice);
 				console.log(checkoutCart[i].price);
 				console.log(checkoutCart[i].amount);
-				totalPrice += (parseInt(checkoutCart[i].price) * parseInt(checkoutCart[i].amount));
+				totalPrice += checkoutCart[i].price * checkoutCart[i].amount;
 				console.log(totalPrice);
 			}
 			$('#totalPrice').text(totalPrice);

@@ -101,8 +101,7 @@ a, a:hover{
 	-webkit-animation-delay: 0.5s;
 }
 #customerMoney{
-	
-	min-width: 80px;
+	width: 80px;
 }
 #totalPrice-style{
 	font-size: 20px;
@@ -114,4 +113,35 @@ a, a:hover{
 }
 #message{
 	color: #e44434;
+}
+@media only screen and (max-width:637px){
+	#addStockInput{
+		width: 50px;
+	}
+}
+
+
+@media only screen and (max-width: 480px){
+	th, td{
+		font-size: 13px;
+	}
+	#input-addon{
+		padding: 0px 3px;
+	}
+	#customerMoney{
+		width: 60px;
+	}
+	#finalBuy{
+		font-size: 12px;
+		padding-top: 12.5px;
+		padding-bottom: 12.5px;
+		padding-right: 3px;
+		padding-left: 3px;
+	}
+	#input-addon, #customerMoney, #product-select, #amountToSell, #transactionDiv{
+		font-size: 12px;
+	}
+	#totalPrice-style{
+		font-size: 18px;
+	}
 }
