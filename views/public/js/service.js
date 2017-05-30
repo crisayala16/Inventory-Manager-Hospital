@@ -55,9 +55,16 @@ $(document).ready(function(){
 				var h4 = $('<h4>');
 				h4.text("Change: $" + moneyDiff);
 				$('#change').html(h4);
+				checkoutCart = [];
+				$('#transactionDiv').html('');
+
 			})
 		}
 
 	});
 
-})
+	$(document).on('hide.bs.modal', '#trans-modal', function(){
+		alert('It works!');
+	});
+
+});
