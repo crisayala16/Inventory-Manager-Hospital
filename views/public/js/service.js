@@ -41,8 +41,8 @@ $(document).ready(function(){
 	});
 	
 	$(document).on('click', '#finalBuy', function(event){
-		var customerMoney = parseInt($('#customerMoney').val().trim());
-		var moneyToPay = parseInt($('#totalPrice').text());
+		var customerMoney = parseFloat($('#customerMoney').val().trim());
+		var moneyToPay = parseFloat($('#totalPrice').text());
 		if(customerMoney < moneyToPay){
 			alert('Not Enough Money.');
 		}
@@ -51,7 +51,7 @@ $(document).ready(function(){
 				if(data){
 					alert('Transaction Successful!');
 				}
-				var moneyDiff = (customerMoney - moneyToPay);
+				var moneyDiff =Math.round(100 * (customerMoney - moneyToPay))/100;
 				var h4 = $('<h4>');
 				h4.text("Change: $" + moneyDiff);
 				$('#change').html(h4);
