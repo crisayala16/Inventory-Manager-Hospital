@@ -1,33 +1,34 @@
 <div id="signUp-body">
 	
 	<div class="container">
-
+		{{!-- Page Header --}}
 		<h2>Sign Up <span class="fa fa-sign-in"></span></h2>
 
 		<form action="/signUp" method="POST">
-
+			{{!-- First and Last name Input --}}
 			<div class="form-group">
 				<label class="control-label" for="name">First and Last Name *</label>
 				<input type="text" class="form-control animated bounceInLeft" name="name">
 			</div>
-
+			{{!-- Username input --}}
 			<div class="form-group">
 				<label class="control-label" for="userNameSign">Username *</label>
 				<input type="text" class="form-control animated bounceInRight" name="userNameSign">
 			</div>
-
+			{{!-- Password input --}}
 			<div class="form-group">
 				<label class="control-label" for="password-sign">Password *</label>
 				<input type="password" class="form-control animated bounceInLeft" name="passwordSign">
 			</div>
-
+			{{!-- Confirm Password input --}}
 			<div class="form-group">
 				<label class="control-label" for="password-sign">Confirm Password *</label>
 				<input type="password" class="form-control animated bounceInRight" name="passwordConfirm">
 			</div>
-
+			{{!-- signup button --}}
 			<button type="submit" class="btn btn-success animated bounceInLeft">SIGN UP</button>
 		</form>
+		{{!-- Link to login page --}}
 		<h3>Already Have an account?</h3><a href="/" id="login-link">Login</a>
 	</div>
 </div>

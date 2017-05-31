@@ -1,9 +1,12 @@
 <div id="login-body">
 	<div class="container">
+		{{!-- Page Header --}}
 		<div id="login-top-head">
 			<h1 id="login-top-title" class="text-center animated bounceInDown">INVENTORY MANAGER <span id="home-logo" class="animated bounceInLeft fa fa-folder-open-o"></span></h1>
 			<h2 class="text-center">Manage With Ease</h2>
 		</div>
+		{{!-- End of Page Header --}}
+		{{!-- Login Panel --}}
 		<div class="panel panel-info animated bounceInUp" id="login-panel">
 			<div class="panel-heading">
 				<div class="panel-title">
@@ -11,6 +14,7 @@
 				</div>
 			</div>
 			<div class="panel-body">
+				{{!-- Username and Password input fields --}}
 				<form action="/" method="POST">
 
 					<div class="form-group">
@@ -26,8 +30,10 @@
 					<button type='submit' class="btn btn-success">Login</button>
 
 				</form>
+				{{!-- Link to go create an account --}}
 				<a href="/signUp" id="signUp-link">Sign Up for an Account</a>
 			</div>
 		</div>
+		{{!-- End of Login Panel --}}
 	</div>
 </div>
