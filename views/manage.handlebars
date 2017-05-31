@@ -11,9 +11,9 @@
 		<thead>
 			<tr class="bg-table-head">
 				<th>Add More Stock</th>
-				<th>Price</th>
 				<th>Product Name</th>
 				<th>Stock Quantity</th>
+				<th>Price</th>
 				<th>Remove Product</th>
 			</tr>
 		</thead>
@@ -39,8 +39,6 @@
 						</div>
 					</form>
 				</td>
-				{{!-- Price of Product --}}
-				<td>$ {{this.price}}</td>
 				{{!-- this checks if the quantity of the product is under 5 --}}
 				{{#compare this.quantity '<' 5}}
 				{{!-- if the product is low on stock --}}
@@ -53,6 +51,8 @@
 				<td>{{this.name}}</td>
 				<td>{{this.quantity}}</td>
 				{{/compare}}
+				{{!-- Price of Product --}}
+				<td>$ {{this.price}}</td>
 				<td>
 					{{!-- Removes product from the table --}}
 					<form action="/user/{{this.currentUser}}/remove/{{this.id}}?_method=DELETE" method="POST">
