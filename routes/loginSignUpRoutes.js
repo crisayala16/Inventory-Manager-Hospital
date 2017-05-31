@@ -23,10 +23,10 @@ router.post('/', function(req, res){
 			res.redirect('/user/' + userName);
 		}
 		else{
-			res.send('Sorry Invalid username or pssword!');
+			res.send('<h1>Sorry Invalid username or password!</h1>');
 		}
 	}).catch(function(err){
-		res.status(400).send('Sorry, Invalid username or password!');
+		res.status(400).send('<h1>Sorry, Invalid username or password!</h1>');
 	});
 });
 
@@ -38,15 +38,32 @@ router.post('/signUp', function(req, res){
 	var name = req.body.name;
 	var userName = req.body.userNameSign;
 	var password = req.body.passwordSign;
-	db.User.create({
-		name: name,
-		username: userName,
-		password: password
+	var passwordConfirm = req.body.passwordConfirm;
+	db.User.findOne({
+		where: {
+			username: userName
+		}
 	}).then(function(data){
-		res.redirect('/');
-	}).catch(function(err){
-		res.status(400).send("Please fill out all input fields");
-	})
+		if(data){
+			res.send('<h1>Username Already taken!</h1>');
+		}
+		else{
+			if(passwordConfirm !== password){
+				res.send("<h1>Passwords do not match!</h1>");
+			}
+			else if(passwordConfirm === password){
+				db.User.create({
+					name: name,
+					username: userName,
+					password: password
+				}).then(function(data){
+					res.redirect('/');
+				});
+			}
+		}
+	});
+	
+	
 });
 
 module.exports = router;

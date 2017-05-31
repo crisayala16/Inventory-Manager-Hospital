@@ -63,4 +63,15 @@ router.put('/user/:username/product/:productName', function(req, res){
 	});
 });
 
+router.delete('/user/:username/remove/:id', function(req, res){
+	var id = req.params.id;
+	var username = req.params.username;
+	db.Product.destroy({
+		where: {
+			id: id
+		}
+	}).then(function(data){
+		res.redirect('/user/' + username);
+	})
+})
 module.exports = router;
