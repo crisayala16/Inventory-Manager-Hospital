@@ -70,9 +70,18 @@ $(document).ready(function(){
 			});
 		}
 	});
+		console.log('it works!');
 
-	$(document).on('hide.bs.modal', '#trans-modal', function(){
-		alert('It works!');
+	$(document).on('hidden.bs.modal', '#trans-modal', function(e){
+				console.log('pooooooooooooooooooooooop');
+
+	});
+	$(document).on('loaded.bs.modal', '#trans-modal', function(e){
+				console.log('pooooooooooooooooooooooop');
+
+	});	$(document).on('shown.bs.modal', '#trans-modal', function(e){
+				console.log('pooooooooooooooooooooooop');
+
 	});
 
 });
