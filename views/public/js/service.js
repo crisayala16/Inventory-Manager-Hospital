@@ -73,15 +73,6 @@ $(document).ready(function(){
 		console.log('it works!');
 
 	$(document).on('hidden.bs.modal', '#trans-modal', function(e){
-				console.log('pooooooooooooooooooooooop');
-
+		location.reload();
 	});
-	$(document).on('loaded.bs.modal', '#trans-modal', function(e){
-				console.log('pooooooooooooooooooooooop');
-
-	});	$(document).on('shown.bs.modal', '#trans-modal', function(e){
-				console.log('pooooooooooooooooooooooop');
-
-	});
-
 });
