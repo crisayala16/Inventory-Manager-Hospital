@@ -12,6 +12,7 @@ router.get('/', function(req, res){
 });
 // Login authentication route
 router.post('/', function(req, res){
+
 	// Goes inside database and looks for the user
 	db.User.findOne({
 		where: {
@@ -25,17 +26,15 @@ router.post('/', function(req, res){
 		// matches the password inside the database
 		if(password === req.body.password){
 			// then redirect the user to their account
-			res.redirect('/user/' + userName);
+			res.send(userName);
 		}
 		else{
 			// else, tell the user the username/password is invalid
-			res.send('<h1>Sorry Invalid username or password!</h1>');
+			res.send('Invalid username or password.');
 		}
-		// Catches an error just in case 
-		// tells the user Invalid username/password
 	}).catch(function(err){
-		res.status(400).send('<h1>Sorry, Invalid username or password!</h1>');
-	});
+		res.send('Invalid username or password.');
+	})
 });
 
 // Renders the signUp page
@@ -47,37 +46,36 @@ router.get('/signUp', function(req, res){
 router.post('/signUp', function(req, res){
 	// Stores input values
 	var name = req.body.name;
-	var userName = req.body.userNameSign;
+	var username = req.body.userNameSign;
 	var password = req.body.passwordSign;
 	var passwordConfirm = req.body.passwordConfirm;
-	// Checks if the username is already taken
 	db.User.findOne({
 		where: {
-			username: userName
+			username: username
 		}
 	}).then(function(data){
 		if(data){
-			// tells the user the username is taken
-			res.send('<h1>Username Already taken!</h1>');
+			res.send('Username taken, choose a different one.')
 		}
 		else{
 			// checks if the password match
 			if(passwordConfirm !== password){
-				res.send("<h1>Passwords do not match!</h1>");
+				res.send('Passwords do not match.');
 			}
 			// if passwords match and username isnt taken
 			else if(passwordConfirm === password){
-				// Create the user in the database
-				db.User.create({
-					name: name,
-					username: userName,
-					password: password
-				}).then(function(data){
-					res.redirect('/');
-				});
-			}
+			// Create the user in the database
+			db.User.create({
+				name: name,
+				username: username,
+				password: password
+			}).then(function(data){
+				res.end();
+			});
 		}
-	});	
+	}
 });
+	
+});	
 
 module.exports = router;

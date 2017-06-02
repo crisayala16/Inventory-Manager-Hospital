@@ -70,9 +70,49 @@ $(document).ready(function(){
 			});
 		}
 	});
-		console.log('it works!');
-
+	//Reloads the page after the transaction is complete
 	$(document).on('hidden.bs.modal', '#trans-modal', function(e){
 		location.reload();
 	});
+
+	$(document).on('click', '#loginBtn', function(){
+		var loginInfo = {
+			userName: $('#userName').val().trim(),
+			password: $('#password').val().trim()
+		}
+		$.post('/', loginInfo).done(function(response){
+			if(response === 'Invalid username or password.'){
+				$('#loginMessage').text(response);
+				$('#loginMessage').addClass('animated flash');
+			}
+			else{
+				 window.location.href = "/user/" + response;
+			}
+		})
+	})
+
+	//Sends info to the server, checking if the account can be created
+	//depending on whether the username is taken and whether the passwords match
+	$('#signUpBtn').click(function(){
+		var signUpInfo = {
+			name: $('#name').val().trim(),
+			userNameSign: $('#userNameSign').val().trim(),
+			passwordSign: $('#passwordSign').val().trim(),
+			passwordConfirm: $('#passwordConfirm').val().trim()
+		};
+		// if a response is recieved, then display the response
+		$.post('/signUp', signUpInfo).done(function(response){
+			if(response === 'Username taken, choose a different one.'){
+				$('#userNameSignMessage').text(response);
+				$('#userNameSignMessage').addClass('animated flash');	
+			}
+			else if(response === "Passwords do not match."){
+				$('#confirmPasswordMessage').text(response);
+				$('#confirmPasswordMessage').addClass('animated flash')
+			}
+			else{
+				 window.location.href = "/";
+			}
+		});
+	})
 });

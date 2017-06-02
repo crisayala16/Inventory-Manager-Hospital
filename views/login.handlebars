@@ -14,20 +14,19 @@
 				</div>
 			</div>
 			<div class="panel-body">
+				<h4 id="loginMessage" class="message"></h4>
 				{{!-- Username and Password input fields --}}
-				<form action="/" method="POST">
-
 					<div class="form-group">
 						<label class="control-label" for="userName">Username</label>
-						<input type="text" class="form-control" name="userName">
+						<input type="text" class="form-control" id="userName">
 					</div>
 
 					<div class="form-group">
 						<label class="control-label" for="password">Password</label>
-						<input type="password" class="form-control" name="password">
+						<input type="password" class="form-control" id="password">
 					</div>
 
-					<button type='submit' class="btn btn-success">Login</button>
+					<button id="loginBtn" class="btn btn-success">Login</button>
 
 				</form>
 				{{!-- Link to go create an account --}}

@@ -111,7 +111,7 @@ a, a:hover{
 #purchase-group{
 	float: right;
 }
-#message{
+.message{
 	color: #e44434;
 }
 @media only screen and (max-width:637px){
