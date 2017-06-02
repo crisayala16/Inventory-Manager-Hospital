@@ -15,6 +15,7 @@
 			</div>
 			<div class="panel-body">
 				<h4 id="loginMessage" class="message"></h4>
+				<form action="/" method="POST">
 				{{!-- Username and Password input fields --}}
 					<div class="form-group">
 						<label class="control-label" for="userName">Username</label>
@@ -26,7 +27,7 @@
 						<input type="password" class="form-control" id="password">
 					</div>
 
-					<button id="loginBtn" class="btn btn-success">Login</button>
+					<button type="submit" id="loginBtn" class="btn btn-success">Login</button>
 
 				</form>
 				{{!-- Link to go create an account --}}

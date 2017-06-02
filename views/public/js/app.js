@@ -86,7 +86,7 @@ $(document).ready(function(){
 				$('#loginMessage').addClass('animated flash');
 			}
 			else{
-				 window.location.href = "/user/" + response;
+				window.location.href = "/user/" + response;
 			}
 		})
 	})
@@ -94,6 +94,8 @@ $(document).ready(function(){
 	//Sends info to the server, checking if the account can be created
 	//depending on whether the username is taken and whether the passwords match
 	$('#signUpBtn').click(function(){
+		$('#userNameSignMessage').text('');
+		$('#confirmPasswordMessage').text('');
 		var signUpInfo = {
 			name: $('#name').val().trim(),
 			userNameSign: $('#userNameSign').val().trim(),
@@ -111,8 +113,35 @@ $(document).ready(function(){
 				$('#confirmPasswordMessage').addClass('animated flash')
 			}
 			else{
-				 window.location.href = "/";
+				window.location.href = "/";
 			}
 		});
-	})
+	});
+
+	//Delete button for products
+	$(document).on('click', '.deleteBtn', function(){
+		var productId = $(this).attr('product');
+		var user = $(this).attr('user');
+		var queryUrl = '/user/' + user + '/remove/' + productId;
+		$.confirm({
+			title: 'Delte Product',
+			content: 'Are you sure you want to delete this product?',
+			buttons: {
+				yes: {
+					btnClass: 'btn-red',
+					action: function(){
+						$.ajax({
+							url: queryUrl,
+							method: 'DELETE'
+						}).done(function(response){
+							window.location.href = "/user/" + user;
+						});
+					}
+				},
+				No: function () {
+					$.alert('Canceled!');
+				} 
+			}
+		});
+	});	
 });

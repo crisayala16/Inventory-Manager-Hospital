@@ -32,9 +32,7 @@ router.post('/', function(req, res){
 			// else, tell the user the username/password is invalid
 			res.send('Invalid username or password.');
 		}
-	}).catch(function(err){
-		res.send('Invalid username or password.');
-	})
+	});
 });
 
 // Renders the signUp page

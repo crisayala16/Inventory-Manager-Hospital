@@ -90,7 +90,7 @@ router.delete('/user/:username/remove/:id', function(req, res){
 		}
 	}).then(function(data){
 		// redirects to manage page
-		res.redirect('/user/' + username);
+		res.end();
 	});
 });
 

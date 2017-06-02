@@ -22,7 +22,10 @@
     "express": "^4.15.3",
     "express-handlebars": "^3.0.0",
     "handlebars-helpers": "^0.8.2",
+    "jquery": "^3.2.1",
+    "jquery-confirm": "^3.2.3",
     "method-override": "^2.3.9",
+    "myclabs.jquery.confirm": "^2.7.0",
     "mysql": "^2.13.0",
     "sequelize": "^3.30.4"
   }
