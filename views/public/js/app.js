@@ -55,7 +55,7 @@ $(document).ready(function(){
 		// if the customer money is less than the amount to pay
 		//alert not enough money
 		if(customerMoney < moneyToPay){
-			alert('Not Enough Money.');
+			$.alert('Not Enough Money.');	
 		}
 		// else, complete the transaction 
 		else if(customerMoney > moneyToPay || customerMoney === moneyToPay){
@@ -66,15 +66,15 @@ $(document).ready(function(){
 				$('#change').html(h4);
 				checkoutCart = [];
 				$('#transactionDiv').html('');
+				//Reloads the page after the transaction is complete
+				$('#trans-modal').on('hidden.bs.modal', function(e){
+					location.reload();
+				});
 
 			});
 		}
 	});
-	//Reloads the page after the transaction is complete
-	$(document).on('hidden.bs.modal', '#trans-modal', function(e){
-		location.reload();
-	});
-
+	
 	$(document).on('click', '#loginBtn', function(){
 		var loginInfo = {
 			userName: $('#userName').val().trim(),
@@ -136,6 +136,24 @@ $(document).ready(function(){
 						}).done(function(response){
 							window.location.href = "/user/" + user;
 						});
+					}
+				},
+				No: function () {
+					$.alert('Canceled!');
+				} 
+			}
+		});
+	});
+	//Log out button on click event
+	$(document).on('click', "#logOutBtn", function(){
+		$.confirm({
+			title: 'Log Out',
+			content: 'Are you sure you want to Log Out?',
+			buttons: {
+				yes: {
+					btnClass: 'btn-dark',
+					action: function(){
+						window.location.href = '/';
 					}
 				},
 				No: function () {
